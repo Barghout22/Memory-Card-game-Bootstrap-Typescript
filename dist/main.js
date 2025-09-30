@@ -2,34 +2,45 @@ var _a;
 import { Card } from "./cards.js";
 import { gameSetup } from "./gameSetup.js";
 let audioPlayers = document.getElementsByTagName("audio");
-let cardDivs = document.getElementsByClassName("imgCntainer");
+let cardDivs = document.querySelectorAll(".imgCntainer");
 let prog = document.querySelector("progress");
 let progPercent = document.getElementById("progressPercentage");
 let CardList = [];
 let clickedCardIndex = -1;
+let secondClickedCardIndex = -1;
 let ClikedCardImg = "";
 document.body.onclick = () => { var _a; return (_a = audioPlayers[0]) === null || _a === void 0 ? void 0 : _a.play(); };
 gameSetup(CardList);
+// cardDivs.forEach(card => {
+//   card.addEventListener("click",()=>console.log("hello"));
+// });
 for (let i = 0; i < 20; i++) {
     (_a = cardDivs[i]) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => {
         var _a, _b, _c, _d, _e, _f, _g, _h;
-        (_a = audioPlayers[1]) === null || _a === void 0 ? void 0 : _a.pause();
-        ((_b = audioPlayers[1]) === null || _b === void 0 ? void 0 : _b.currentTime) ? audioPlayers[1].currentTime = 0 : null;
-        (_c = audioPlayers[1]) === null || _c === void 0 ? void 0 : _c.play();
-        let img = (_d = cardDivs[i]) === null || _d === void 0 ? void 0 : _d.querySelector("img");
+        if (Card.successCounter == 10)
+            return;
+        let img = (_a = cardDivs[i]) === null || _a === void 0 ? void 0 : _a.querySelector("img");
+        if ((img === null || img === void 0 ? void 0 : img.src) === "./assets/back.jpg")
+            console.log("hellow");
+        (_b = audioPlayers[1]) === null || _b === void 0 ? void 0 : _b.pause();
+        ((_c = audioPlayers[1]) === null || _c === void 0 ? void 0 : _c.currentTime) ? audioPlayers[1].currentTime = 0 : null;
+        (_d = audioPlayers[1]) === null || _d === void 0 ? void 0 : _d.play();
         img === null || img === void 0 ? void 0 : img.src = (_e = CardList[i]) === null || _e === void 0 ? void 0 : _e.HiddenImgSrc;
         if (clickedCardIndex === -1) {
             clickedCardIndex = i;
             ClikedCardImg = img === null || img === void 0 ? void 0 : img.src;
         }
         else if (ClikedCardImg === (img === null || img === void 0 ? void 0 : img.src)) {
-            Card.successCounter++;
-            (_f = audioPlayers[2]) === null || _f === void 0 ? void 0 : _f.pause();
-            ((_g = audioPlayers[2]) === null || _g === void 0 ? void 0 : _g.currentTime) ? audioPlayers[2].currentTime = 0 : null;
-            (_h = audioPlayers[2]) === null || _h === void 0 ? void 0 : _h.play();
-            clickedCardIndex = -1;
-            ClikedCardImg = "";
-            checkForSuccess();
+            secondClickedCardIndex = i;
+            if (clickedCardIndex !== secondClickedCardIndex) {
+                Card.successCounter++;
+                (_f = audioPlayers[2]) === null || _f === void 0 ? void 0 : _f.pause();
+                ((_g = audioPlayers[2]) === null || _g === void 0 ? void 0 : _g.currentTime) ? audioPlayers[2].currentTime = 0 : null;
+                (_h = audioPlayers[2]) === null || _h === void 0 ? void 0 : _h.play();
+                clickedCardIndex = -1;
+                ClikedCardImg = "";
+                checkForSuccess();
+            }
         }
         else {
             setTimeout(() => {
