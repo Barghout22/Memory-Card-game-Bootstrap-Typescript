@@ -13,12 +13,21 @@
     }
     img{
         width: 200px;
+        
+    }
+    .imgCntainer{
+      height: 300px;
     }
     
     </style>
 </head>
 <body>
+
     <div class="container bg-light opacity-75">
+            <div class="row fs-1 text-center fw-bold" >
+        <label for="progress" >progress<progress class="w-75" max="100" value="0" id="progress"></progress ><span id="progressPercentage">0% </span></label>
+        </div>
+        
         <div class="row">
             <div class="col-2 imgCntainer">
                 <img src="./assets/back.jpg" alt="">
@@ -87,6 +96,9 @@
                     <div class="col-2 imgCntainer">
                                 <img src="./assets/back.jpg" alt="">
                             </div>
+        </div>
+        <div class="row" >
+            <p hidden id="endGame" class="fs-1 text-center fw-bold" >You won!</p>
         </div>
     </div>
     <audio src="./assets/audio/fulltrack.mp3"></audio>

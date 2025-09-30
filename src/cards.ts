@@ -1,3 +1,4 @@
+
 export class Card{
 
 static successCounter=0;
