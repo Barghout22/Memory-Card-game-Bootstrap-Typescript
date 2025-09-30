@@ -18,6 +18,6 @@ Match all identical pairs of cards to win. The game includes 20 cards (10 pairs)
 
 
 ## Demo
-![Game Screenshot](screenshots/Screenshot1.jpg)
-![Game Screenshot](screenshots/Screenshot2.jpg)
-![Game Screenshot](screenshots/Screenshot3.jpg)
+![Game Screenshot](screenshots/Screenshot1.png)
+![Game Screenshot](screenshots/Screenshot2.png)
+![Game Screenshot](screenshots/Screenshot3.png)
